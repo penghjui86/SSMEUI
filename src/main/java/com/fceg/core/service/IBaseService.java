@@ -1,5 +1,6 @@
 package com.fceg.core.service;
 
+import com.fceg.result.BaseResult;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,7 +12,11 @@ public interface IBaseService<T> {
 
     public int save(T entity);
 
+    BaseResult saveOrUpdate(T entity);
+
     public int delete(Object key);
+
+    public BaseResult deleteByIds(String ids);
 
     public int updateAll(T entity);
 

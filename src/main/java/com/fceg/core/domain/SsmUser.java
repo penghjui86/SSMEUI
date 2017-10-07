@@ -1,9 +1,10 @@
 package com.fceg.core.domain;
 
+import javax.persistence.Id;
 import java.util.Date;
 
-public class SsmUser {
-    private Long id;
+public class SsmUser extends Entity{
+
 
     private String loginName;
 
@@ -26,14 +27,6 @@ public class SsmUser {
     private Date updateTime;
 
     private Date createTime;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getLoginName() {
         return loginName;
