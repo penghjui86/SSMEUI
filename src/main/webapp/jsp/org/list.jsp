@@ -18,5 +18,5 @@
 <div id="SsmOrgEdit" title="组织机构" style="width:500px;height:400px;top: 100px;padding: 10px;display: none" data-options="iconCls: 'icon-save',closed: true,modal: true,inline:true,buttons:[{text:'保存',iconCls:'icon-save',handler:function(){SsmOrg.input.submitForm()}},{text:'取消',iconCls:'icon-cancel',handler:function(){SsmOrg.input.close()}}]"  ></div>
 <script src="<%=request.getContextPath()%>/jsp/org/ssm-org.js"></script>
 <script>
-    <%--SsmOrg.list.init('<%=request.getContextPath()%>');--%>
+    SsmOrg.list.init('<%=request.getContextPath()%>');
 </script>
