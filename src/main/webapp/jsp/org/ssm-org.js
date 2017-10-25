@@ -3,6 +3,8 @@ var SsmOrgList;
 var SsmOrgEdit;
 var SsmOrgForm;
 
+var parentOrg;
+
 var SsmOrg={
     URL:{
         inputUI:function () {
@@ -81,16 +83,43 @@ var SsmOrg={
 
                     if(opt.parentField){
                         parentField=opt.parentField;
-                        alert(parentField);
+                        //console.log(parentField);
                         var jsonStr=JSON.stringify(data);//将json对象转化为json字符串
-                        alert(jsonStr);
+                        //console.log(jsonStr);
                         jsonStr=jsonStr.replace(new RegExp(parentField,"gm"),"_parentId");
-                        alert(jsonStr);
-                        return JSON.parse(jsonStr);
+                        //console.log(jsonStr);
+                        return JSON.parse(jsonStr);//将json字符串转化为json对象
                     }
                 }
                 
             });
+        },
+        reload:function () {
+            SsmOrgList.treegrid("reload");
+        },
+        collapseAll:function () {
+            var roots=SsmOrgList.treegrid("getRoots");
+            for (var i in roots){
+                SsmOrgList.treegrid("collapseAll",roots[i].id);
+            }
+        },
+        expandAll:function () {
+            var roots=SsmOrgList.treegrid("getRoots");
+            for(var i in roots){
+               SsmOrgList.treegrid("expandAll",roots[i].id);
+            }
+        },
+        add:function () {
+          SsmOrgEdit.dialog({
+              href:SsmOrg.URL.inputUI(),
+              onLoad:function () {
+                  parentOrg.combotree({
+                      url:SsmOrg.URL.tree(),
+                      method:'get',
+                      panelHeight:'auto'
+                  }).dialog("open");
+              },
+          })
         },
 
     }

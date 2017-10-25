@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Controller
 @RequestMapping("/org")
@@ -54,6 +55,13 @@ public class SsmOrgController {
     public BaseResult get(@PathVariable("id")Long id){
         SsmOrg ssmOrg=ssmOrgService.selectByKey(id);
         return BaseResult.ok("查询成功",ssmOrg);
+    }
+
+
+    @RequestMapping("/tree")
+    public void tree(){
+        System.out.println("ssss");
+        ssmOrgService.tree();
     }
 
 }
