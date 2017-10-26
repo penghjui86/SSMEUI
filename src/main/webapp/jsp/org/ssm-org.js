@@ -182,7 +182,7 @@ var SsmOrg={
                                     loadFilter:function(data){
                                         var jsonStr=JSON.stringify(data);//将json对象转化为字符串
                                         jsonStr=jsonStr.replace(new RegExp('name','gm'),'text');
-                                        return JSON.parse(jsonStr);
+                                        return JSON.parse(jsonStr);//将json字符串转化为json对象
                                     }
                                 });
                             }
@@ -191,9 +191,46 @@ var SsmOrg={
                 }
             }).dialog("open");
         },
+        delete:function () {
+            var ids=SsmOrg.list.getSelectionsIds();
+
+            if(ids.length<1){
+                $.messager.alert('对话框','至少选择一行');
+                retrun;
+            }
+
+            $.messager.confirm({
+                title:'确认提示框',
+                msg:'你确定要删除吗？',
+                fn:function (r) {
+                    if(r){
+                        $.ajax({
+                            type:'DELETE',
+                            url:SsmOrg.URL.delete(ids),
+                            success:function () {
+                                SsmOrg.list.reload();
+                                SsmOrg.list.clearSelectionsAndChecked();
+                            }
+                        })
+                    }
+                }
+            })
 
 
-
+        },
+        clearSelectionsAndChecked:function () {
+          SsmOrgList.treegrid("clearChecked");
+          SsmOrgList.treegrid("clearSelections");
+        },
+        getSelectionsIds:function(){
+            var sels=SsmOrgList.datagrid("getSelections");
+            var ids=[];
+            for (var i in sels){
+                ids.push(sels[i].id);
+            }
+            ids=ids.join(",");
+            return ids;
+        },
     }
 };
 
