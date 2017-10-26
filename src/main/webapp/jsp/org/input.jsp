@@ -47,3 +47,8 @@
             <td></td>
         </tr>
     </table>
+</form>
+<script src="<%=request.getContextPath()%>/jsp/org/ssm-org.js"></script>
+<script>
+    SsmOrg.input.init();
+</script>

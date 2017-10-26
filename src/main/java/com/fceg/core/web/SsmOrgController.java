@@ -59,9 +59,9 @@ public class SsmOrgController {
 
 
     @RequestMapping("/tree")
-    public void tree(){
-        System.out.println("ssss");
-        ssmOrgService.tree();
+    @ResponseBody
+    public List<SsmOrg> tree(){
+        return ssmOrgService.tree();
     }
 
 }

@@ -13,3 +13,12 @@
 <!-- easyui扩展 -->
 <link rel="stylesheet" type="text/css" href="${ctx}/resources/easyui/easyui-ext/icons/icon-standard.css"/>
 <script type="text/javascript" src="${ctx}/resources/easyui/easyui-ext/icons/icon-standard.js"></script>
+
+
+<%--自定js--%>
+<script type="text/javascript" src="/resources/js/extJs.js"></script>
+<script type="text/javascript" src="/resources/js/baseLoading.js"></script>
+<%--自定义CSS--%>
+
+<link rel="stylesheet" type="text/css" href="/resources/css/common.css">
+
