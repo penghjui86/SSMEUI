@@ -17,14 +17,20 @@ var SsmUser={
         list:function(){
             return ctx+"/user/list";
         },
+        orgTree:function () {
+            return "/org/tree";
+        }
     },
     list:{
         init:function(){
             SsmUser.list.initComponet();
+            SsmUser.list.initOrgTree();
             SsmUser.list.initList();
         },
         initComponet:function(){
             SsmUserList=$("#SsmUserList");
+            SsmUserEdit=$("#SsmUserEdit");
+            SsmUserOrgTree=$("#SsmUserOrgTree");
         },
         initList:function(){
             SsmUserList.datagrid({
@@ -49,6 +55,25 @@ var SsmUser={
                     {field:'createTime',title:'创建时间',hidden:false},
                 ]],
             });
+        },
+        initOrgTree:function () {
+            SsmUserOrgTree.tree({
+                method:'get',
+                url:SsmUser.URL.orgTree(),
+                loadFilter:function (data) {
+                    var jsonStr=JSON.stringify(data);
+                    jsonStr = jsonStr.replace(new RegExp("name","gm"),"text");
+                    return JSON.parse(jsonStr);
+                },
+                onSelect:function (node) {
+                    if(SsmUserOrgTree.tree('isLeaf',node.target)){
+                        SsmUserList.datagrid({
+                            queryParams:{orgId:node.id}
+                        })
+                    }
+                },
+
+            })
         }
     }
 

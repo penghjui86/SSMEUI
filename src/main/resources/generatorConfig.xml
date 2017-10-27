@@ -52,14 +52,14 @@
             <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
         </table> -->
 
-       <table schema="general" tableName="ssm_org" domainObjectName="SsmOrg">
-            <!--&lt;!&ndash;domain字段的命名规则，false:默认为驼峰命名 true:按数据库真实命名 &ndash;&gt;-->
-           <property name="useActualColumnNames" value="false" />
-            <!--&lt;!&ndash; 忽略列，不生成bean 字段 &ndash;&gt;-->
-            <!--&lt;!&ndash; <ignoreColumn column="FRED" /> &ndash;&gt;-->
-            <!--&lt;!&ndash; 指定列的java数据类型 &ndash;&gt;-->
-            <!--&lt;!&ndash; <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" /> &ndash;&gt;-->
-        </table>
+       <!--<table schema="general" tableName="ssm_org" domainObjectName="SsmOrg">-->
+            <!--&lt;!&ndash;&lt;!&ndash;domain字段的命名规则，false:默认为驼峰命名 true:按数据库真实命名 &ndash;&gt;&ndash;&gt;-->
+           <!--<property name="useActualColumnNames" value="false" />-->
+            <!--&lt;!&ndash;&lt;!&ndash; 忽略列，不生成bean 字段 &ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash; <ignoreColumn column="FRED" /> &ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash; 指定列的java数据类型 &ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash; <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" /> &ndash;&gt;&ndash;&gt;-->
+        <!--</table>-->
 
         <!--<table schema="general" tableName="ssm_user" domainObjectName="SsmUser">-->
             <!--&lt;!&ndash;&lt;!&ndash;domain字段的命名规则，false:默认为驼峰命名 true:按数据库真实命名 &ndash;&gt;&ndash;&gt;-->
@@ -70,12 +70,30 @@
             <!--&lt;!&ndash;&lt;!&ndash; <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" /> &ndash;&gt;&ndash;&gt;-->
         <!--</table>-->
 
-        <table schema="general" tableName="ssm_role" domainObjectName="SsmRole">
-           <!--&lt;!&ndash; &lt;!&ndash;domain字段的命名规则，false:默认为驼峰命名 true:按数据库真实命名 &ndash;&gt;&ndash;&gt;-->
-           <property name="useActualColumnNames" value="false" />
-          <!--&lt;!&ndash;  &lt;!&ndash; 忽略列，不生成bean 字段 &ndash;&gt;&ndash;&gt;-->
-           <!--&lt;!&ndash; &lt;!&ndash; <ignoreColumn column="FRED" /> &ndash;&gt;&ndash;&gt;-->
-          <!--&lt;!&ndash;  &lt;!&ndash; 指定列的java数据类型 &ndash;&gt;&ndash;&gt;-->
+        <!--<table schema="general" tableName="ssm_role" domainObjectName="SsmRole">-->
+           <!--&lt;!&ndash;&lt;!&ndash; &lt;!&ndash;domain字段的命名规则，false:默认为驼峰命名 true:按数据库真实命名 &ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+           <!--<property name="useActualColumnNames" value="false" />-->
+          <!--&lt;!&ndash;&lt;!&ndash;  &lt;!&ndash; 忽略列，不生成bean 字段 &ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+           <!--&lt;!&ndash;&lt;!&ndash; &lt;!&ndash; <ignoreColumn column="FRED" /> &ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+          <!--&lt;!&ndash;&lt;!&ndash;  &lt;!&ndash; 指定列的java数据类型 &ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash; <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" /> &ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+        <!--</table>-->
+
+        <table schema="general" tableName="ssm_user_org" domainObjectName="SsmUserOrg">
+            <!--&lt;!&ndash; &lt;!&ndash;domain字段的命名规则，false:默认为驼峰命名 true:按数据库真实命名 &ndash;&gt;&ndash;&gt;-->
+            <property name="useActualColumnNames" value="false" />
+            <!--&lt;!&ndash;  &lt;!&ndash; 忽略列，不生成bean 字段 &ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash; &lt;!&ndash; <ignoreColumn column="FRED" /> &ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;  &lt;!&ndash; 指定列的java数据类型 &ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash; <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" /> &ndash;&gt;&ndash;&gt;-->
+        </table>
+
+        <table schema="general" tableName="ssm_user_role" domainObjectName="SsmUserRole">
+            <!--&lt;!&ndash; &lt;!&ndash;domain字段的命名规则，false:默认为驼峰命名 true:按数据库真实命名 &ndash;&gt;&ndash;&gt;-->
+            <property name="useActualColumnNames" value="false" />
+            <!--&lt;!&ndash;  &lt;!&ndash; 忽略列，不生成bean 字段 &ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash; &lt;!&ndash; <ignoreColumn column="FRED" /> &ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;  &lt;!&ndash; 指定列的java数据类型 &ndash;&gt;&ndash;&gt;-->
             <!--&lt;!&ndash;&lt;!&ndash; <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" /> &ndash;&gt;&ndash;&gt;-->
         </table>
     </context>

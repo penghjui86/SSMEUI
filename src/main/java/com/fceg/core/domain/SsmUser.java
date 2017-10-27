@@ -1,6 +1,7 @@
 package com.fceg.core.domain;
 
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import java.util.Date;
 
 public class SsmUser extends Entity{
@@ -27,6 +28,17 @@ public class SsmUser extends Entity{
     private Date updateTime;
 
     private Date createTime;
+
+    @Transient
+    private Long orgId;
+
+    public Long getOrgId() {
+        return orgId;
+    }
+
+    public void setOrgId(Long orgId) {
+        this.orgId = orgId;
+    }
 
     public String getLoginName() {
         return loginName;

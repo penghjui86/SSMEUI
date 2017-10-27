@@ -104,13 +104,25 @@
                                                 if ($('#main-tabs').tabs('exists', title)){
                                                     $('#main-tabs').tabs('select', title);
                                                 } else {
+                                                    //var content = '<iframe scrolling="auto" frameborder="0"  src="'+url+'" style="width:100%;height:100%;"></iframe>';
 
                                                     $('#main-tabs').tabs('add',{
                                                         title:title,
                                                         href:url,
-                                                        content:"asdfdf",
-                                                        closable:true
+                                                        //content:content,
+                                                        content: '<div id="tab'+title+'"></div>',
+														closable:true,
+														border:false
                                                     });
+
+                                                    $('#main-tabs').tabs({
+														onAdd: function(title,title){
+															$.get(url,function(data){
+																$('#tab'+title).html(data);
+															});
+														}
+													})
+
                                                 }
                                            }
 
