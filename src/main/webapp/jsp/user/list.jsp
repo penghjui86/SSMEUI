@@ -11,9 +11,9 @@
 
     <div data-options="region:'center',border:false">
         <div id="toolbar" class="easyui-panel">
-            <a href="#" class="easyui-linkbutton easyui-tooltip" title="添加" data-options="iconCls:'icon-add',plain:true">添加</a>
-            <a href="#" class="easyui-linkbutton easyui-tooltip" title="删除" data-options="iconCls:'icon-remove',plain:true">删除</a>
-            <a href="#" class="easyui-linkbutton easyui-tooltip" title="修改" data-options="iconCls:'icon-edit',plain:true">修改</a>
+            <a href="#" class="easyui-linkbutton easyui-tooltip" title="添加" data-options="iconCls:'icon-add',plain:true" onclick="SsmUser.list.add()">添加</a>
+            <a href="#" class="easyui-linkbutton easyui-tooltip" title="删除" data-options="iconCls:'icon-remove',plain:true" onclick="SsmUser.list.delete()">删除</a>
+            <a href="#" class="easyui-linkbutton easyui-tooltip" title="修改" data-options="iconCls:'icon-edit',plain:true" onclick="SsmUser.list.edit()">修改</a>
         </div>
 
         <div id="searchbar" class="easyui-panel" style="width:100%;padding:10px 10px;">
@@ -21,7 +21,7 @@
                         <table>
                             <tr>
                                 <td>Name:</td>
-                                <td><input name="name" class="f1 easyui-textbox"></input></td>
+                                <td><input lang="searchSsmUser" name="name" class="f1 easyui-textbox"></input></td>
 
                                 <td>Email:</td>
                                 <td><input name="email" class="f1 easyui-textbox"></input></td>
@@ -48,6 +48,8 @@
         </div>
     </div>
 </div>
+<%--弹出窗口--%>
+<div id="SsmUserEdit" title="用户"  style="width:500px;height:500px;top: 100px;padding: 10px;display: none" data-options="iconCls: 'icon-save',closed: true,modal: true,inline:true,buttons:[{text:'保存',iconCls:'icon-save',handler:function(){SsmUser.input.submitForm()}},{text:'取消',iconCls:'icon-cancel',handler:function(){SsmUser.input.close()}}]"></div>
 <script src="/jsp/user/ssm-user.js"></script>
 <script type="text/javascript">
     $(function(){

@@ -9,8 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Random;
 
 @Controller
@@ -52,6 +54,13 @@ public class SsmRoleController {
     public BaseResult get(@PathVariable("id")Long id){
         SsmRole ssmRole=ssmRoleService.selectByKey(id);
         return BaseResult.ok("查询成功",ssmRole);
+    }
+
+    @RequestMapping("/all")
+    @ResponseBody
+    public List<SsmRole> all(){
+        Example example=new Example(SsmRole.class);
+        return  ssmRoleService.selectByExample(example);
     }
 
 }

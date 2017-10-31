@@ -110,18 +110,18 @@
                                                         title:title,
                                                         href:url,
                                                         //content:content,
-                                                        content: '<div id="tab'+title+'"></div>',
+                                                        //content: '<div id="tab'+title+'"></div>',
 														closable:true,
 														border:false
                                                     });
 
-                                                    $('#main-tabs').tabs({
-														onAdd: function(title,title){
-															$.get(url,function(data){
-																$('#tab'+title).html(data);
-															});
-														}
-													})
+//                                                    $('#main-tabs').tabs({
+//														onAdd: function(title,title){
+//															$.get(url,function(data){
+//																$('#tab'+title).html(data);
+//															});
+//														}
+//													})
 
                                                 }
                                            }

@@ -4,8 +4,11 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.fceg.core.domain.SsmUser;
 import com.fceg.core.service.ISsmUserService;
+import com.fceg.result.BaseResult;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -17,9 +20,9 @@ public class SsmUserController {
     @Resource
     private ISsmUserService ssmUserService;
 
-    @RequestMapping("/ui/list")
-    private String user(){
-        return "user/list";
+    @RequestMapping("/ui/{ui}")
+    private String user(@PathVariable("ui") String ui ){
+        return "user/"+ui;
     }
 
     @RequestMapping("/list")
@@ -30,11 +33,21 @@ public class SsmUserController {
         return JSON.toJSONStringWithDateFormat( ssmUserService.listPage(ssmUser,page,rows),"yyyy-MM-dd HH:mm:ss", SerializerFeature.WriteDateUseDateFormat) ;
     }
 
-    public void save(){
+    @RequestMapping("/save")
+    @ResponseBody
+    public BaseResult save(SsmUser entity){
 
+        return ssmUserService.saveOrUpdate(entity);
     }
 
-    public void delete(){
-
+    @RequestMapping("/get/{id}")
+    @ResponseBody
+    public BaseResult get(@PathVariable("id") Long id){
+        return ssmUserService.get(id);
+    }
+    @RequestMapping(value = "/delete/{ids}",method = RequestMethod.DELETE)
+    @ResponseBody
+    public Object delete(@PathVariable("ids") String ids){
+        return ssmUserService.deleteByIds(ids);
     }
 }

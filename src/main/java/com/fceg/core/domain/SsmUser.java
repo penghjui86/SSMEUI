@@ -29,8 +29,31 @@ public class SsmUser extends Entity{
 
     private Date createTime;
 
+    //查询组织成员表单元素
     @Transient
     private Long orgId;
+
+    //保存修改表单元素
+    @Transient
+    private Long[] orgIds=new Long[0];
+    @Transient
+    private Long[] roleIds=new Long[0];
+
+    public Long[] getOrgIds() {
+        return orgIds;
+    }
+
+    public void setOrgIds(Long[] orgIds) {
+        this.orgIds = orgIds;
+    }
+
+    public Long[] getRoleIds() {
+        return roleIds;
+    }
+
+    public void setRoleIds(Long[] roleIds) {
+        this.roleIds = roleIds;
+    }
 
     public Long getOrgId() {
         return orgId;

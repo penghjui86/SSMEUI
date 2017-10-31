@@ -86,11 +86,11 @@ var SsmRole={
         },
 
         add:function(){
-            SsmRoleEdit.window({
+            SsmRoleEdit.dialog({
                 href:SsmRole.URL.inputUI(),
                 onLoad:function(){
                 }
-            }).window("open");
+            }).dialog("open");
 
         },
 
@@ -105,7 +105,7 @@ var SsmRole={
                return;
            }
 
-           SsmRoleEdit.window({
+           SsmRoleEdit.dialog({
                 href:SsmRole.URL.inputUI(),
                 onLoad:function(){
                     $.ajax({
@@ -123,7 +123,7 @@ var SsmRole={
                         }
                     })
                 }
-           }).window("open");
+           }).dialog("open");
         },
 
         delete:function(){
