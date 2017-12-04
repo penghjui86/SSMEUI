@@ -4,12 +4,12 @@
 <html>
 <head>
  <meta charset="UTF-8">
-<title>框架搭建</title>
+<title>盈繁科技框架搭建</title>
 <%@include file="common/header.jsp"%>
 </head>
 <body class="easyui-layout">
 
-	<div data-options="region:'north',border:false" style="height:60px;padding:10px">north region</div>
+<div data-options="region:'north',border:false" style="height: 70px;padding:0px"><h1>盈繁科技管理系统后台</h1></div>
 
 	<div data-options="region:'west',split:true,title:'West'" style="width:150px;">
            <div id="aa" class="easyui-accordion" data-options="border:true">
@@ -21,12 +21,14 @@
 
                     <div title="About" data-options="iconCls:'icon-ok'" style="overflow:auto;padding:10px;">
                         <a href="javascript:void()" class="easyui-link" onclick="addTabAjax('组织机构','/org/ui/list')">组织机构</a>
+						<a href="javascript:void()" class="easyui-link" onclick="addTabAjax('资源列表','/resource/ui/list')">资源列表</a>
                     </div>
 
                     <div title="About" data-options="iconCls:'icon-ok'" style="overflow:auto;padding:10px;">
                         <h3 style="color:#0099FF;">Accordion for jQuery</h3>
                         <p>Accordion is a part of easyui framework for jQuery. It lets you define your accordion component on web page more easily.</p>
                     </div>
+
             </div>
 	</div>
 
