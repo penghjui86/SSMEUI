@@ -7,4 +7,5 @@ public interface ISsmRoleService extends IBaseService<SsmRole> {
 
     public BaseResult listPage(SsmRole ssmRole,int page,int rows);
 
+
 }

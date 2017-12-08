@@ -6,6 +6,8 @@
     <a href="#" class="easyui-linkbutton easyui-tooltip" title="添加" data-options="iconCls:'icon-add',plain:true" onclick="javascript:SsmRole.list.add()">添加</a>
     <a href="#" class="easyui-linkbutton easyui-tooltip" title="删除" data-options="iconCls:'icon-remove',plain:true" onclick="javascript:SsmRole.list.delete()">删除</a>
     <a href="#" class="easyui-linkbutton easyui-tooltip" title="修改" data-options="iconCls:'icon-edit',plain:true" onclick="javascript:SsmRole.list.edit()">修改</a>
+    <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-reload'" plain="true" onclick="javascript:SsmRole.list.reload()">刷新</a>
+    <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-reload'" plain="true" onclick="javascript:SsmRole.list.authorize()">授权</a>
 </div>
 
 <div id="rolesearchbar" class="easyui-panel" style="width:100%;padding:10px 10px;">
@@ -39,6 +41,8 @@
 </div>
 
 <div id="SsmRoleEdit" title="角色" style="width:500px;height:300px;top: 100px;padding: 10px;display: none" data-options="iconCls: 'icon-save',closed: true,modal: true,inline:true,buttons:[{text:'保存',iconCls:'icon-save',handler:function(){SsmRole.input.submitForm()}},{text:'取消',iconCls:'icon-cancel',handler:function(){SsmRole.input.close()}}]"></div>
+
+<div id="SsmRoleResourceEdit" title="资源"  style="width:1000px;height:500px;top: 100px;padding: 10px;display: none" data-options="iconCls: 'icon-save',closed: true,modal: true,inline:true"></div>
 
 <script src="/jsp/role/ssm-role.js"></script>
 

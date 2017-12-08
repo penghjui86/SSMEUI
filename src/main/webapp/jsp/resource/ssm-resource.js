@@ -68,6 +68,20 @@ var SsmResource={
         },
         close:function () {
             SsmResourceEdit.dialog('close');
+        },
+        setIcon:function (value) {
+            iconText.textbox("setValue",value);
+            globalWindow.dialog("close");
+        },
+        chooseIcon:function(){
+            globalWindow.dialog({
+                title:'选择图标',
+                width:605,
+                height:400,
+                modal:true,
+                href:SsmResource.URL.iconUI(),
+                cache:false
+            })
         }
     },
     list:{
@@ -282,11 +296,8 @@ var SsmResource={
             }
             ids=ids.join(",");
             return ids;
-        },
-        setIcon:function (value) {
-            iconText.textbox("setValue",value);
-            globalWindow.dialog("close");
-        },
+        }
+
         
     }
 };

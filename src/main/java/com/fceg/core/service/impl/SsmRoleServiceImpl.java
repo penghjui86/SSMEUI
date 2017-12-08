@@ -40,4 +40,6 @@ public class SsmRoleServiceImpl extends BaseServiceImpl<SsmRole> implements ISsm
 
         return baseResult;
     }
+
+
 }

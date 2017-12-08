@@ -6,13 +6,16 @@ import com.fceg.core.domain.SsmOrg;
 import com.fceg.core.domain.SsmResource;
 import com.fceg.core.service.ISsmOrgService;
 import com.fceg.core.service.ISsmResourceService;
+import com.fceg.core.service.ISsmRoleResourceService;
 import com.fceg.result.BaseResult;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -21,6 +24,8 @@ public class SsmResourceController {
 
     @Resource
     private ISsmResourceService ssmResourceService;
+
+
 
     @RequestMapping("/ui/{ui}")
     private String ui(@PathVariable("ui") String ui){
@@ -38,6 +43,11 @@ public class SsmResourceController {
     @RequestMapping("/save")
     @ResponseBody
     public BaseResult save(SsmResource ssmResource){
+        if (ssmResource.getId()!=null){
+            ssmResource.setUpdateTime(new Date());
+        }else{
+            ssmResource.setCreateTime(new Date());
+        }
         ssmResourceService.saveOrUpdate(ssmResource);
         return BaseResult.ok("保存成功");
     }
@@ -63,5 +73,7 @@ public class SsmResourceController {
     public List<SsmResource> tree(){
         return ssmResourceService.tree();
     }
+
+
 
 }

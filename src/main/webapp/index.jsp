@@ -6,9 +6,17 @@
  <meta charset="UTF-8">
 <title>盈繁科技框架搭建</title>
 <%@include file="common/header.jsp"%>
+	<script >
+        var globalWindow;
+        $(function () {
+            globalWindow=$("#globalWindow");
+        })
+
+	</script>
 </head>
 <body class="easyui-layout">
-
+<!-- 全局弹出框 -->
+<div id="globalWindow" style="display: none"></div>
 <div data-options="region:'north',border:false" style="height: 70px;padding:0px"><h1>盈繁科技管理系统后台</h1></div>
 
 	<div data-options="region:'west',split:true,title:'West'" style="width:150px;">
