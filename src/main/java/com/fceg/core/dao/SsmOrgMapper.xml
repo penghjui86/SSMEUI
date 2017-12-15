@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fceg.core.dao.SsmOrgMapper" >
+ <resultMap id="SsmOrg" type="com.fceg.core.domain.SsmOrg" >
+    <result column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="icon" property="icon" jdbcType="VARCHAR" />
+    <result column="pid" property="pid" jdbcType="BIGINT" />
+    <result column="is_leaf" property="isLeaf" jdbcType="BIT" />
+    <result column="seq" property="seq" jdbcType="TINYINT" />
+    <result column="del_flag" property="delFlag" jdbcType="BIT" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <collection column="id" property="children" ofType="SsmOrg" javaType="java.util.List" select="querySsmOrgChildrenById"></collection>
+  </resultMap>
+
+ <select id="querySsmOrgTreeList" resultMap="SsmOrg">
+    select * from ssm_org where pid is NULL
+</select>
+ <select id="querySsmOrgChildrenById" resultMap="SsmOrg" parameterType="long">
+  select * from ssm_org where pid=#{id}
+ </select>
+ <!-- <sql id="Example_Where_Clause" >
+   <where >
+     <foreach collection="oredCriteria" item="criteria" separator="or" >
+       <if test="criteria.valid" >
+         <trim prefix="(" suffix=")" prefixOverrides="and" >
+           <foreach collection="criteria.criteria" item="criterion" >
+             <choose >
+               <when test="criterion.noValue" >
+                 and ${criterion.condition}
+               </when>
+               <when test="criterion.singleValue" >
+                 and ${criterion.condition} #{criterion.value}
+               </when>
+               <when test="criterion.betweenValue" >
+                 and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+               </when>
+               <when test="criterion.listValue" >
+                 and ${criterion.condition}
+                 <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                   #{listItem}
+                 </foreach>
+               </when>
+             </choose>
+           </foreach>
+         </trim>
+       </if>
+     </foreach>
+   </where>
+ </sql>
+ <sql id="Update_By_Example_Where_Clause" >
+   <where >
+     <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+       <if test="criteria.valid" >
+         <trim prefix="(" suffix=")" prefixOverrides="and" >
+           <foreach collection="criteria.criteria" item="criterion" >
+             <choose >
+               <when test="criterion.noValue" >
+                 and ${criterion.condition}
+               </when>
+               <when test="criterion.singleValue" >
+                 and ${criterion.condition} #{criterion.value}
+               </when>
+               <when test="criterion.betweenValue" >
+                 and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+               </when>
+               <when test="criterion.listValue" >
+                 and ${criterion.condition}
+                 <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                   #{listItem}
+                 </foreach>
+               </when>
+             </choose>
+           </foreach>
+         </trim>
+       </if>
+     </foreach>
+   </where>
+ </sql>
+ <sql id="Base_Column_List" >
+   id, name, address, code, icon, pid, is_leaf, seq, del_flag, update_time, create_time
+ </sql>
+ <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fceg.core.domain.SsmOrgExample" >
+   select
+   <if test="distinct" >
+     distinct
+   </if>
+   <include refid="Base_Column_List" />
+   from ssm_org
+   <if test="_parameter != null" >
+     <include refid="Example_Where_Clause" />
+   </if>
+   <if test="orderByClause != null" >
+     order by ${orderByClause}
+   </if>
+ </select>
+ <delete id="deleteByExample" parameterType="com.fceg.core.domain.SsmOrgExample" >
+   delete from ssm_org
+   <if test="_parameter != null" >
+     <include refid="Example_Where_Clause" />
+   </if>
+ </delete>
+ <insert id="insert" parameterType="com.fceg.core.domain.SsmOrg" >
+   insert into ssm_org (id, name, address,
+     code, icon, pid, is_leaf,
+     seq, del_flag, update_time,
+     create_time)
+   values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR},
+     #{code,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, #{pid,jdbcType=BIGINT}, #{isLeaf,jdbcType=BIT},
+     #{seq,jdbcType=TINYINT}, #{delFlag,jdbcType=BIT}, #{updateTime,jdbcType=TIMESTAMP},
+     #{createTime,jdbcType=TIMESTAMP})
+ </insert>
+ <insert id="insertSelective" parameterType="com.fceg.core.domain.SsmOrg" >
+   insert into ssm_org
+   <trim prefix="(" suffix=")" suffixOverrides="," >
+     <if test="id != null" >
+       id,
+     </if>
+     <if test="name != null" >
+       name,
+     </if>
+     <if test="address != null" >
+       address,
+     </if>
+     <if test="code != null" >
+       code,
+     </if>
+     <if test="icon != null" >
+       icon,
+     </if>
+     <if test="pid != null" >
+       pid,
+     </if>
+     <if test="isLeaf != null" >
+       is_leaf,
+     </if>
+     <if test="seq != null" >
+       seq,
+     </if>
+     <if test="delFlag != null" >
+       del_flag,
+     </if>
+     <if test="updateTime != null" >
+       update_time,
+     </if>
+     <if test="createTime != null" >
+       create_time,
+     </if>
+   </trim>
+   <trim prefix="values (" suffix=")" suffixOverrides="," >
+     <if test="id != null" >
+       #{id,jdbcType=BIGINT},
+     </if>
+     <if test="name != null" >
+       #{name,jdbcType=VARCHAR},
+     </if>
+     <if test="address != null" >
+       #{address,jdbcType=VARCHAR},
+     </if>
+     <if test="code != null" >
+       #{code,jdbcType=VARCHAR},
+     </if>
+     <if test="icon != null" >
+       #{icon,jdbcType=VARCHAR},
+     </if>
+     <if test="pid != null" >
+       #{pid,jdbcType=BIGINT},
+     </if>
+     <if test="isLeaf != null" >
+       #{isLeaf,jdbcType=BIT},
+     </if>
+     <if test="seq != null" >
+       #{seq,jdbcType=TINYINT},
+     </if>
+     <if test="delFlag != null" >
+       #{delFlag,jdbcType=BIT},
+     </if>
+     <if test="updateTime != null" >
+       #{updateTime,jdbcType=TIMESTAMP},
+     </if>
+     <if test="createTime != null" >
+       #{createTime,jdbcType=TIMESTAMP},
+     </if>
+   </trim>
+ </insert>
+ <select id="countByExample" parameterType="com.fceg.core.domain.SsmOrgExample" resultType="java.lang.Integer" >
+   select count(*) from ssm_org
+   <if test="_parameter != null" >
+     <include refid="Example_Where_Clause" />
+   </if>
+ </select>
+ <update id="updateByExampleSelective" parameterType="map" >
+   update ssm_org
+   <set >
+     <if test="record.id != null" >
+       id = #{record.id,jdbcType=BIGINT},
+     </if>
+     <if test="record.name != null" >
+       name = #{record.name,jdbcType=VARCHAR},
+     </if>
+     <if test="record.address != null" >
+       address = #{record.address,jdbcType=VARCHAR},
+     </if>
+     <if test="record.code != null" >
+       code = #{record.code,jdbcType=VARCHAR},
+     </if>
+     <if test="record.icon != null" >
+       icon = #{record.icon,jdbcType=VARCHAR},
+     </if>
+     <if test="record.pid != null" >
+       pid = #{record.pid,jdbcType=BIGINT},
+     </if>
+     <if test="record.isLeaf != null" >
+       is_leaf = #{record.isLeaf,jdbcType=BIT},
+     </if>
+     <if test="record.seq != null" >
+       seq = #{record.seq,jdbcType=TINYINT},
+     </if>
+     <if test="record.delFlag != null" >
+       del_flag = #{record.delFlag,jdbcType=BIT},
+     </if>
+     <if test="record.updateTime != null" >
+       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+     </if>
+     <if test="record.createTime != null" >
+       create_time = #{record.createTime,jdbcType=TIMESTAMP},
+     </if>
+   </set>
+   <if test="_parameter != null" >
+     <include refid="Update_By_Example_Where_Clause" />
+   </if>
+ </update>
+ <update id="updateByExample" parameterType="map" >
+   update ssm_org
+   set id = #{record.id,jdbcType=BIGINT},
+     name = #{record.name,jdbcType=VARCHAR},
+     address = #{record.address,jdbcType=VARCHAR},
+     code = #{record.code,jdbcType=VARCHAR},
+     icon = #{record.icon,jdbcType=VARCHAR},
+     pid = #{record.pid,jdbcType=BIGINT},
+     is_leaf = #{record.isLeaf,jdbcType=BIT},
+     seq = #{record.seq,jdbcType=TINYINT},
+     del_flag = #{record.delFlag,jdbcType=BIT},
+     update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+     create_time = #{record.createTime,jdbcType=TIMESTAMP}
+   <if test="_parameter != null" >
+     <include refid="Update_By_Example_Where_Clause" />
+   </if>
+ </update>-->
+</mapper>
